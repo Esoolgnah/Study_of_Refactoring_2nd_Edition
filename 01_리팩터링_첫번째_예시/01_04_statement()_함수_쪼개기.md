@@ -830,7 +830,7 @@ function totalVolumeCredits() {
 
 ## 다음 챕터
 
-- [1.5]()
+- [1.5 - 중간 점검: 난무하는 중첩 함수](https://github.com/Esoolgnah/Summary_of_Refactoring_2nd_Edition/blob/main/01_리팩터링_첫번째_예시/01_05_중간_점검:난무하는_중첩_함수.md)
 
 <br>
 
