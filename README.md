@@ -1,8 +1,8 @@
-# Summary_of_Refactoring_2nd_Edition
+# Study_of_Refactoring_2nd_Edition
 
 <br>
 
-리팩터링 2판을 읽으며 내용을 직접 타이핑해보며 공부중입니다.
+리팩터링 2판의 내용을 읽고 직접 타이핑해보며 공부중입니다.
 
 <br>
 
