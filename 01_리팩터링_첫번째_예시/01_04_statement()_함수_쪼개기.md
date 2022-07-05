@@ -2,7 +2,7 @@
 
 <br>
 
-[예제](https://github.com/Esoolgnah/Summary_of_Refactoring_2nd_Edition/blob/main/01_리팩터링_첫번째_예시/01_01_자_시작해보자.md)의 switch 문을 보면 한 번의 공연에 대한 요금을 계산하고 있습니다. 여기서는 코드 조각을 별도 함수로 추출하는 방식으로 앞서 파악한 정보를 코드에 반영할 것입니다. 추출한 함수에는 그 코드가 하는 일을 설명하는 이름을 지어줍니다. `amountFor(aPerformance)` 정도면 적당해 보입니다. 이 절차를 따로 기록해두고, 나중에 참조하기 쉽도록 `함수 추출하기`라는 이름을 붙였습니다.
+[예시 코드](https://github.com/Esoolgnah/Summary_of_Refactoring_2nd_Edition/blob/main/01_리팩터링_첫번째_예시/01_01_자_시작해보자.md)의 switch 문을 보면 한 번의 공연에 대한 요금을 계산하고 있습니다. 여기서는 코드 조각을 별도 함수로 추출하는 방식으로 앞서 파악한 정보를 코드에 반영할 것입니다. 추출한 함수에는 그 코드가 하는 일을 설명하는 이름을 지어줍니다. `amountFor(aPerformance)` 정도면 적당해 보입니다. 이 절차를 따로 기록해두고, 나중에 참조하기 쉽도록 `함수 추출하기`라는 이름을 붙였습니다.
 
 <br>
 
