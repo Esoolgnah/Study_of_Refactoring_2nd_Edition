@@ -22,10 +22,10 @@
 
 ## 다음 장 목록으로
 
-- [1장 목록](https://github.com/Esoolgnah/Summary_of_Refactoring_2nd_Edition/blob/main/01_리팩터링_첫번째_예시/01_00_리팩터링_첫번째_예시.md)
+- [1장 목록](https://github.com/Esoolgnah/Summary_of_Refactoring_2nd_Edition/blob/main/Notes/01_리팩터링_첫번째_예시/01_00_리팩터링_첫번째_예시.md)
 
 <br>
 
 ## 전체 목록으로
 
-- [전체 목록](https://github.com/Esoolgnah/Summary_of_Refactoring_2nd_Edition/blob/main/README.md)
+- [전체 목록](https://github.com/Esoolgnah/Summary_of_Refactoring_2nd_Edition/blob/main/Notes/README.md)
