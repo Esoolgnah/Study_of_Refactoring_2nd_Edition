@@ -495,7 +495,7 @@ function statement(invoice, plays) {
 
 <br>
 
-임시 변수는 나중에 문제를 일으킬 수 있습니다. 또한 자신이 속한 루틴에서만 의미가 있어 루틴이 길고 복잡해지기 쉽습니다. 따라서 다음으로 할 리팩토링은 이런 변수들을 제거하는 것입니다. 그중에서 `format`이 가장 만만해 보입니다. `format`은 임시 변수에 함수를 대입한 형태인데, 필자는 함수를 직접 선언해 사용하도록 바꾸는 편입니다.
+임시 변수는 나중에 문제를 일으킬 수 있습니다. 또한 자신이 속한 루틴에서만 의미가 있어 루틴이 길고 복잡해지기 쉽습니다. 따라서 다음으로 할 리팩터링은 이런 변수들을 제거하는 것입니다. 그중에서 `format`이 가장 만만해 보입니다. `format`은 임시 변수에 함수를 대입한 형태인데, 필자는 함수를 직접 선언해 사용하도록 바꾸는 편입니다.
 
 <br>
 
@@ -541,23 +541,25 @@ function statement(invoice, plays) {
 
 ```js
 // 최상위...
-  function statement(invoice, plays) {
-    let totalAmount = 0;
-    let volumeCredits = 0;
-    let result = `청구 내역 (고객명: ${invoice.customer})\n`;
-    for (let perf of invoice.performances) {
-      volumeCredits += volumeCreditsFor(perf);
+function statement(invoice, plays) {
+  let totalAmount = 0;
+  let volumeCredits = 0;
+  let result = `청구 내역 (고객명: ${invoice.customer})\n`;
+  for (let perf of invoice.performances) {
+    volumeCredits += volumeCreditsFor(perf);
 
-      // 청구 내역을 출력한다.
-      // result += `  ${playFor(perf).name}: ${format(amountFor(perf) / 100)} (${perf.audience}석)\n`;
-      result += `  ${playFor(perf).name}: ${usd(amountFor(perf)} (${perf.audience}석)\n`; // 함수 이름 변경, /100 삭제
-      totalAmount += amountFor(perf);
-    }
-    // result += `총액: ${format(totalAmount/100)}\n`;
-    result += `총액: ${usd(totalAmount)}\n`; // 함수 이름 변경, /100 삭제
-    result += `적립 포인트: ${volumeCredits}점\n`;
-    return result;
+    // 청구 내역을 출력한다.
+    // result += `  ${playFor(perf).name}: ${format(amountFor(perf) / 100)} (${perf.audience}석)\n`;
+    result += `  ${playFor(perf).name}: ${usd(amountFor(perf))} (${
+      perf.audience
+    }석)\n`; // 함수 이름 변경, /100 삭제
+    totalAmount += amountFor(perf);
   }
+  // result += `총액: ${format(totalAmount/100)}\n`;
+  result += `총액: ${usd(totalAmount)}\n`; // 함수 이름 변경, /100 삭제
+  result += `적립 포인트: ${volumeCredits}점\n`;
+  return result;
+}
 ```
 
 <br>
@@ -591,27 +593,30 @@ function usd(aNumber) {
 
 ```js
 // 최상위...
-  function statement(invoice, plays) {
-    let totalAmount = 0;
-    let volumeCredits = 0;
-    let result = `청구 내역 (고객명: ${invoice.customer})\n`;
+function statement(invoice, plays) {
+  let totalAmount = 0;
+  let volumeCredits = 0;
+  let result = `청구 내역 (고객명: ${invoice.customer})\n`;
 
-    for (let perf of invoice.performances) {
-      volumeCredits += volumeCreditsFor(perf);
+  for (let perf of invoice.performances) {
+    volumeCredits += volumeCreditsFor(perf);
 
-      // 청구 내역을 출력한다.
-      result += `  ${playFor(perf).name}: ${usd(amountFor(perf)} (${perf.audience}석)\n`;
-      totalAmount += amountFor(perf);
-    }
-
-    for (let perf of invoice.performances) { // 값 누적 로직을 별도 for문으로 분리
-      volumeCredits += volumeCreditsFor(perf);
-    }
-
-    result += `총액: ${usd(totalAmount)}\n`;
-    result += `적립 포인트: ${volumeCredits}점\n`;
-    return result;
+    // 청구 내역을 출력한다.
+    result += `  ${playFor(perf).name}: ${usd(amountFor(perf))} (${
+      perf.audience
+    }석)\n`;
+    totalAmount += amountFor(perf);
   }
+
+  for (let perf of invoice.performances) {
+    // 값 누적 로직을 별도 for문으로 분리
+    volumeCredits += volumeCreditsFor(perf);
+  }
+
+  result += `총액: ${usd(totalAmount)}\n`;
+  result += `적립 포인트: ${volumeCredits}점\n`;
+  return result;
+}
 ```
 
 <br>
@@ -622,27 +627,29 @@ function usd(aNumber) {
 
 ```js
 // 최상위...
-  function statement(invoice, plays) {
-    let totalAmount = 0;
-    // let volumeCredits = 0;
-    let result = `청구 내역 (고객명: ${invoice.customer})\n`;
+function statement(invoice, plays) {
+  let totalAmount = 0;
+  // let volumeCredits = 0;
+  let result = `청구 내역 (고객명: ${invoice.customer})\n`;
 
-    for (let perf of invoice.performances) {
-      volumeCredits += volumeCreditsFor(perf);
+  for (let perf of invoice.performances) {
+    volumeCredits += volumeCreditsFor(perf);
 
-      // 청구 내역을 출력한다.
-      result += `  ${playFor(perf).name}: ${usd(amountFor(perf)} (${perf.audience}석)\n`;
-      totalAmount += amountFor(perf);
-    }
-    let volumeCredits = 0; // 변수 선언(초기화)을 반복문 앞으로 이동
-    for (let perf of invoice.performances) {
-      volumeCredits += volumeCreditsFor(perf);
-    }
-
-    result += `총액: ${usd(totalAmount)}\n`;
-    result += `적립 포인트: ${volumeCredits}점\n`;
-    return result;
+    // 청구 내역을 출력한다.
+    result += `  ${playFor(perf).name}: ${usd(amountFor(perf))} (${
+      perf.audience
+    }석)\n`;
+    totalAmount += amountFor(perf);
   }
+  let volumeCredits = 0; // 변수 선언(초기화)을 반복문 앞으로 이동
+  for (let perf of invoice.performances) {
+    volumeCredits += volumeCreditsFor(perf);
+  }
+
+  result += `총액: ${usd(totalAmount)}\n`;
+  result += `적립 포인트: ${volumeCredits}점\n`;
+  return result;
+}
 ```
 
 <br>
@@ -667,23 +674,25 @@ function totalVolumeCredits() {
 
 ```js
 // 최상위...
-  function statement(invoice, plays) {
-    let totalAmount = 0;
-    let result = `청구 내역 (고객명: ${invoice.customer})\n`;
+function statement(invoice, plays) {
+  let totalAmount = 0;
+  let result = `청구 내역 (고객명: ${invoice.customer})\n`;
 
-    for (let perf of invoice.performances) {
-      volumeCredits += volumeCreditsFor(perf);
+  for (let perf of invoice.performances) {
+    volumeCredits += volumeCreditsFor(perf);
 
-      // 청구 내역 출력하기
-      result += `  ${playFor(perf).name}: ${usd(amountFor(perf)} (${perf.audience}석)\n`;
-      totalAmount += amountFor(perf);
-    }
-    let volumeCredits = totalVolumeCredits(); // 값 계산 로직을 함수로 추출
-
-    result += `총액: ${usd(totalAmount)}\n`;
-    result += `적립 포인트: ${volumeCredits}점\n`;
-    return result;
+    // 청구 내역 출력하기
+    result += `  ${playFor(perf).name}: ${usd(amountFor(perf))} (${
+      perf.audience
+    }석)\n`;
+    totalAmount += amountFor(perf);
   }
+  let volumeCredits = totalVolumeCredits(); // 값 계산 로직을 함수로 추출
+
+  result += `총액: ${usd(totalAmount)}\n`;
+  result += `적립 포인트: ${volumeCredits}점\n`;
+  return result;
+}
 ```
 
 <br>
@@ -694,21 +703,22 @@ function totalVolumeCredits() {
 
 ```js
 // 최상위...
-  function statement(invoice, plays) {
-    let totalAmount = 0;
-    let result = `청구 내역 (고객명: ${invoice.customer})\n`;
+function statement(invoice, plays) {
+  let totalAmount = 0;
+  let result = `청구 내역 (고객명: ${invoice.customer})\n`;
 
-    for (let perf of invoice.performances) {
-
-      // 청구 내역을 출력한다.
-      result += `  ${playFor(perf).name}: ${usd(amountFor(perf)} (${perf.audience}석)\n`;
-      totalAmount += amountFor(perf);
-    }
-
-    result += `총액: ${usd(totalAmount)}\n`; // 변수 인라인
-    result += `적립 포인트: ${totalVolumeCredits()}점\n`; // volumeCredits => totalVolumeCredits()
-    return result;
+  for (let perf of invoice.performances) {
+    // 청구 내역을 출력한다.
+    result += `  ${playFor(perf).name}: ${usd(amountFor(perf))} (${
+      perf.audience
+    }석)\n`;
+    totalAmount += amountFor(perf);
   }
+
+  result += `총액: ${usd(totalAmount)}\n`; // 변수 인라인
+  result += `적립 포인트: ${totalVolumeCredits()}점\n`; // volumeCredits => totalVolumeCredits()
+  return result;
+}
 ```
 
 <br>
@@ -749,17 +759,19 @@ function appleSauce() {
 
 ```js
 // 최상위...
-  function statement(invoice, plays) {
-    let result = `청구 내역 (고객명: ${invoice.customer})\n`;
-    for (let perf of invoice.performances) {
-      result += `  ${playFor(perf).name}: ${usd(amountFor(perf)} (${perf.audience}석)\n`;
-    }
-    let totalAmount = appleSauce(); // 함수 추출 & 임시 이름 부여
-
-    result += `총액: ${usd(totalAmount)}\n`;
-    result += `적립 포인트: ${totalVolumeCredits()}점\n`;
-    return result;
+function statement(invoice, plays) {
+  let result = `청구 내역 (고객명: ${invoice.customer})\n`;
+  for (let perf of invoice.performances) {
+    result += `  ${playFor(perf).name}: ${usd(amountFor(perf))} (${
+      perf.audience
+    }석)\n`;
   }
+  let totalAmount = appleSauce(); // 함수 추출 & 임시 이름 부여
+
+  result += `총액: ${usd(totalAmount)}\n`;
+  result += `적립 포인트: ${totalVolumeCredits()}점\n`;
+  return result;
+}
 ```
 
 <br>
@@ -770,18 +782,20 @@ function appleSauce() {
 
 ```js
 // 최상위...
-  function statement(invoice, plays) {
-    let result = `청구 내역 (고객명: ${invoice.customer})\n`;
-    for (let perf of invoice.performances) {
-      result += `  ${playFor(perf).name}: ${usd(amountFor(perf)} (${perf.audience}석)\n`;
-    }
-
-    // let totalAmount = appleSauce();
-
-    result += `총액: ${usd(totalAmount())}\n`; // 변수 인라인 후 함수 이름 바꾸기
-    result += `적립 포인트: ${totalVolumeCredits()}점\n`;
-    return result;
+function statement(invoice, plays) {
+  let result = `청구 내역 (고객명: ${invoice.customer})\n`;
+  for (let perf of invoice.performances) {
+    result += `  ${playFor(perf).name}: ${usd(amountFor(perf))} (${
+      perf.audience
+    }석)\n`;
   }
+
+  // let totalAmount = appleSauce();
+
+  result += `총액: ${usd(totalAmount())}\n`; // 변수 인라인 후 함수 이름 바꾸기
+  result += `적립 포인트: ${totalVolumeCredits()}점\n`;
+  return result;
+}
 ```
 
 <br>
