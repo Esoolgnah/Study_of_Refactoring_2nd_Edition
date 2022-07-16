@@ -20,6 +20,8 @@
 
 - ### :star: [02 리팩터링 원칙](https://github.com/Esoolgnah/Summary_of_Refactoring_2nd_Edition/blob/main/Notes/02_리팩터링_원칙/02_00_리팩터링_원칙.md)
 
+- ### :star: [03 코드에서 나는 악취](https://github.com/Esoolgnah/Summary_of_Refactoring_2nd_Edition/blob/main/Notes/03_코드에서_나는_악취/03_00_코드에서_나는_악취.md)
+
 <br>
 
 ---
