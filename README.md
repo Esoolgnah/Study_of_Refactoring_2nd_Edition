@@ -18,6 +18,8 @@
 
 - ### :star: [03 코드에서 나는 악취](https://github.com/Esoolgnah/Summary_of_Refactoring_2nd_Edition/blob/main/Notes/03_코드에서_나는_악취/03_00_코드에서_나는_악취.md)
 
+- ### :star: [04 테스트 구축하기](https://github.com/Esoolgnah/Summary_of_Refactoring_2nd_Edition/blob/main/Notes/04_테스트_구축하기/04_00_테스트_구축하기.md)
+
 <br>
 
 ---
