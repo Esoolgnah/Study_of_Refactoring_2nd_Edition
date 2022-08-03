@@ -28,4 +28,4 @@
 
 ## 전체 목록으로
 
-- [전체 목록](https://github.com/Esoolgnah/Summary_of_Refactoring_2nd_Edition/blob/main/Notes/README.md)
+- [전체 목록](https://github.com/Esoolgnah/Summary_of_Refactoring_2nd_Edition/blob/main/README.md)
