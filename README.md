@@ -20,6 +20,8 @@
 
 - ### :star: [04 테스트 구축하기](https://github.com/Esoolgnah/Summary_of_Refactoring_2nd_Edition/blob/main/Notes/04_테스트_구축하기/04_00_테스트_구축하기.md)
 
+- ### :star: [05 리팩터링 카탈로그 보는 법](https://github.com/Esoolgnah/Summary_of_Refactoring_2nd_Edition/blob/main/Notes/05_리팩터링_카탈로그_보는_법/05_00_리팩터링_카탈로그_보는_법.md)
+
 <br>
 
 ---
