@@ -192,7 +192,7 @@ function statement(invoice, plays) {
 
 <br>
 
-`컴파일-테스트-커밋`한 다음 `변수 인라인하기`를 적용합니다.
+`컴파일-테스트-커밋`한 다음 [`변수 인라인하기`](https://github.com/Esoolgnah/Summary_of_Refactoring_2nd_Edition/blob/main/Notes/06_기본적인_리팩터링/06_04_변수_인라인하기.md)를 적용합니다.
 
 <br>
 
@@ -343,7 +343,7 @@ function amountFor(aPerformance) {
 
 <br>
 
-지역 변수를 제거해서 얻는 가장 큰 장점은 `추출 작업이 훨씬 쉬워진다는 것입니다.` 유효범위를 신경 써야 할 대상이 줄어들기 때문입니다. `amountFor()`에 전달할 인수를 모두 처리했으니, 이 함수를 호출하는 코드로 돌아가봅시다. 여기서 `amountFor()`는 임시 변수인 `thisAmount`에 값을 설정하는 데 사용되는데, 그 값이 다시 바뀌지는 않습니다. 따라서 `변수 인라인하기`를 적용합니다.
+지역 변수를 제거해서 얻는 가장 큰 장점은 `추출 작업이 훨씬 쉬워진다는 것입니다.` 유효범위를 신경 써야 할 대상이 줄어들기 때문입니다. `amountFor()`에 전달할 인수를 모두 처리했으니, 이 함수를 호출하는 코드로 돌아가봅시다. 여기서 `amountFor()`는 임시 변수인 `thisAmount`에 값을 설정하는 데 사용되는데, 그 값이 다시 바뀌지는 않습니다. 따라서 [`변수 인라인하기`](https://github.com/Esoolgnah/Summary_of_Refactoring_2nd_Edition/blob/main/Notes/06_기본적인_리팩터링/06_04_변수_인라인하기.md)를 적용합니다.
 
 <br>
 
@@ -731,7 +731,7 @@ function statement(invoice, plays) {
 
 <br>
 
-1.`반복문 쪼개기`로 변수 값을 누적시키는 부분을 분리합니다. 2. `문장 슬라이드하기`로 변수 초기화 문장을 변수 값 누적 코드 바로 앞으로 옮깁니다. 3. [`함수 추출하기`](https://github.com/Esoolgnah/Summary_of_Refactoring_2nd_Edition/blob/main/Notes/06_기본적인_리팩터링/06_01_함수_추출하기.md)로 적립 포인트 계산 부분을 별도 함수로 추출합니다. 4. `변수 인라인하기`로 `volumeCredits` 변수를 제거합니다.
+1.`반복문 쪼개기`로 변수 값을 누적시키는 부분을 분리합니다. 2. `문장 슬라이드하기`로 변수 초기화 문장을 변수 값 누적 코드 바로 앞으로 옮깁니다. 3. [`함수 추출하기`](https://github.com/Esoolgnah/Summary_of_Refactoring_2nd_Edition/blob/main/Notes/06_기본적인_리팩터링/06_01_함수_추출하기.md)로 적립 포인트 계산 부분을 별도 함수로 추출합니다. 4. [`변수 인라인하기`](https://github.com/Esoolgnah/Summary_of_Refactoring_2nd_Edition/blob/main/Notes/06_기본적인_리팩터링/06_04_변수_인라인하기.md)로 `volumeCredits` 변수를 제거합니다.
 
 <br>
 
