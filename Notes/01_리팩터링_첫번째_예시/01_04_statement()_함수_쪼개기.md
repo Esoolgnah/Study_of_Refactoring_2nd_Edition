@@ -233,7 +233,7 @@ function statement(invoice, plays) {
 
 <br>
 
-다시 `컴파일-테스트-커밋`합니다. 변수를 인라인한 덕분에 `amountFor()`에 함수 선언 바꾸기를 적용해서 `play` 매개변수를 제거할 수 있게 되었습니다. 먼저 새로 만든 `playFor()`를 사용하도록 `amountFor()`를 수정합니다.
+다시 `컴파일-테스트-커밋`합니다. 변수를 인라인한 덕분에 `amountFor()`에 [`함수 선언 바꾸기`](https://github.com/Esoolgnah/Summary_of_Refactoring_2nd_Edition/blob/main/Notes/06_기본적인_리팩터링/06_05_함수_선언_바꾸기.md)를 적용해서 `play` 매개변수를 제거할 수 있게 되었습니다. 먼저 새로 만든 `playFor()`를 사용하도록 `amountFor()`를 수정합니다.
 
 <br>
 
@@ -535,7 +535,7 @@ function statement(invoice, plays) {
 
 <br>
 
-그러나 `format`은 이 함수가 하는 일을 충분히 설명해주지 못합니다. 이 함수의 핵심은 화폐 단위 맞추기입니다. 그런 느낌을 살리는 이름을 골라서 다음과 같이 `함수 선언 바꾸기`를 적용해봅시다.
+그러나 `format`은 이 함수가 하는 일을 충분히 설명해주지 못합니다. 이 함수의 핵심은 화폐 단위 맞추기입니다. 그런 느낌을 살리는 이름을 골라서 다음과 같이 [`함수 선언 바꾸기`](https://github.com/Esoolgnah/Summary_of_Refactoring_2nd_Edition/blob/main/Notes/06_기본적인_리팩터링/06_05_함수_선언_바꾸기.md)를 적용해봅시다.
 
 <br>
 
