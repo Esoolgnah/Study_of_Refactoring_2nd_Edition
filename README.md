@@ -24,6 +24,9 @@
 
 - ### :star: [06 기본적인 리팩터링](https://github.com/Esoolgnah/Summary_of_Refactoring_2nd_Edition/blob/main/Notes/06_기본적인_리팩터링/06_00_기본적인_리팩터링.md)
 
+- ### :star: [7장 캡슐화](https://github.com/Esoolgnah/Summary_of_Refactoring_2nd_Edition/blob/main/Notes/07_캡슐화/07_00_캡슐화.md)
+
+
 <br>
 
 ---
