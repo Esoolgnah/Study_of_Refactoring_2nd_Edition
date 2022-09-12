@@ -16,13 +16,13 @@ function amountFor(perf, play) {
   let thisAmount = 0; // 변수를 초기화하는 코드
 
   switch (play.type) {
-    case 'tragedy': // 비극
+    case "tragedy": // 비극
       thisAmount = 40000;
       if (perf.audience > 30) {
         thisAmount += 1000 * (perf.audience - 30);
       }
       break;
-    case 'comedy': // 희극
+    case "comedy": // 희극
       thisAmount = 30000;
       if (perf.audience > 20) {
         thisAmount += 10000 + 500 * (perf.audience - 20);
@@ -48,9 +48,9 @@ function statement(invoice, plays) {
   let totalAmount = 0;
   let volumeCredits = 0;
   let result = `청구 내역 (고객명: ${invoice.customer})\n`;
-  const format = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
+  const format = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
     minimumFractionDigits: 2,
   }).format;
 
@@ -62,7 +62,7 @@ function statement(invoice, plays) {
     volumeCredits += Math.max(perf.audience - 30, 0);
 
     // 희극 관객 5명마다 추가 포인트를 제공한다.
-    if (play.type === 'comedy') volumeCredits += Math.floor(perf.audience / 5);
+    if (play.type === "comedy") volumeCredits += Math.floor(perf.audience / 5);
 
     // 청구 내역을 출력한다.
     result += `  ${play.name}: ${format(thisAmount / 100)} (${
@@ -110,14 +110,14 @@ function amountFor(aPerformance, play) {
   let result = 0; // thisAmount => result : 명확한 이름으로 변경
 
   switch (play.type) {
-    case 'tragedy': // 비극
+    case "tragedy": // 비극
       result = 40000; // thisAmount
       if (aPerformance.audience > 30) {
         // perf
         result += 1000 * (aPerformance.audience - 30); // thisAmount, perf
       }
       break;
-    case 'comedy': // 희극
+    case "comedy": // 희극
       result = 30000; // thisAmount
       if (aPerformance.audience > 20) {
         // perf
@@ -148,7 +148,7 @@ function amountFor(aPerformance, play) {
 
 ### `play` 변수 제거하기
 
-긴 함수를 쪼갤 때는 필요 없는 임시 변수를 최대한 제거합니다. 임시 변수들 때문에 로컬 범위에 존재하는 이름이 늘어나서 추출 작업이 복잡해지기 때문입니다. 이를 해결해주는 리팩터링으로는 `임시 변수를 질의 함수로 바꾸기`가 있습니다. 먼저 대입문(=)의 우변을 함수로 추출합니다.
+긴 함수를 쪼갤 때는 필요 없는 임시 변수를 최대한 제거합니다. 임시 변수들 때문에 로컬 범위에 존재하는 이름이 늘어나서 추출 작업이 복잡해지기 때문입니다. 이를 해결해주는 리팩터링으로는 [`임시 변수를 질의 함수로 바꾸기`](https://github.com/Esoolgnah/Summary_of_Refactoring_2nd_Edition/blob/main/Notes/07_캡슐화/07_04_임시_변수를_질의_함수로_바꾸기.md)가 있습니다. 먼저 대입문(=)의 우변을 함수로 추출합니다.
 
 <br>
 
@@ -163,9 +163,9 @@ function statement(invoice, plays) {
   let totalAmount = 0;
   let volumeCredits = 0;
   let result = `청구 내역 (고객명: ${invoice.customer})\n`;
-  const format = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
+  const format = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
     minimumFractionDigits: 2,
   }).format;
   for (let perf of invoice.performances) {
@@ -176,7 +176,7 @@ function statement(invoice, plays) {
     volumeCredits += Math.max(perf.audience - 30, 0);
 
     // 희극 관객 5명마다 추가 포인트를 제공한다.
-    if (play.type === 'comedy') volumeCredits += Math.floor(perf.audience / 5);
+    if (play.type === "comedy") volumeCredits += Math.floor(perf.audience / 5);
 
     // 청구 내역을 출력한다.
     result += `  ${play.name}: ${format(thisAmount / 100)} (${
@@ -202,9 +202,9 @@ function statement(invoice, plays) {
   let totalAmount = 0;
   let volumeCredits = 0;
   let result = `청구 내역 (고객명: ${invoice.customer})\n`;
-  const format = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
+  const format = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
     minimumFractionDigits: 2,
   }).format;
   for (let perf of invoice.performances) {
@@ -215,7 +215,7 @@ function statement(invoice, plays) {
     volumeCredits += Math.max(perf.audience - 30, 0);
 
     // 희극 관객 5명마다 추가 포인트를 제공한다.
-    if (playFor(perf).type === 'comedy')
+    if (playFor(perf).type === "comedy")
       // <= 변수 인라인, play: playFor(perf)
       volumeCredits += Math.floor(perf.audience / 5);
 
@@ -246,13 +246,13 @@ function amountFor(aPerformance, play) {
   switch (
     playFor(aPerformance).type // play를 playFor() 호출로 변경
   ) {
-    case 'tragedy': // 비극
+    case "tragedy": // 비극
       result = 40000; // thisAmount
       if (aPerformance.audience > 30) {
         result += 1000 * (aPerformance.audience - 30);
       }
       break;
-    case 'comedy': // 희극
+    case "comedy": // 희극
       result = 30000;
       if (aPerformance.audience > 20) {
         result += 10000 + 500 * (aPerformance.audience - 20);
@@ -278,9 +278,9 @@ function statement(invoice, plays) {
   let totalAmount = 0;
   let volumeCredits = 0;
   let result = `청구 내역 (고객명: ${invoice.customer})\n`;
-  const format = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
+  const format = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
     minimumFractionDigits: 2,
   }).format;
   for (let perf of invoice.performances) {
@@ -291,7 +291,7 @@ function statement(invoice, plays) {
     volumeCredits += Math.max(perf.audience - 30, 0);
 
     // 희극 관객 5명마다 추가 포인트를 제공한다.
-    if (playFor(perf).type === 'comedy')
+    if (playFor(perf).type === "comedy")
       volumeCredits += Math.floor(perf.audience / 5);
 
     // 청구 내역을 출력한다.
@@ -317,13 +317,13 @@ function amountFor(aPerformance) {
   let result = 0;
 
   switch (playFor(aPerformance).type) {
-    case 'tragedy': // 비극
+    case "tragedy": // 비극
       result = 40000; // thisAmount
       if (aPerformance.audience > 30) {
         result += 1000 * (aPerformance.audience - 30);
       }
       break;
-    case 'comedy': // 희극
+    case "comedy": // 희극
       result = 30000;
       if (aPerformance.audience > 20) {
         result += 10000 + 500 * (aPerformance.audience - 20);
@@ -353,9 +353,9 @@ function statement(invoice, plays) {
   let totalAmount = 0;
   let volumeCredits = 0;
   let result = `청구 내역 (고객명: ${invoice.customer})\n`;
-  const format = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
+  const format = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
     minimumFractionDigits: 2,
   }).format;
   for (let perf of invoice.performances) {
@@ -365,7 +365,7 @@ function statement(invoice, plays) {
     volumeCredits += Math.max(perf.audience - 30, 0);
 
     // 희극 관객 5명마다 추가 포인트를 제공한다.
-    if (playFor(perf).type === 'comedy')
+    if (playFor(perf).type === "comedy")
       volumeCredits += Math.floor(perf.audience / 5);
 
     // 청구 내역을 출력한다.
@@ -400,7 +400,7 @@ function volumeCreditsFor(perf) {
   // 새로 추출한 함수
   let volumeCredits = 0;
   volumeCredits += Math.max(perf.audience - 30, 0);
-  if ('comedy' === playFor(perf).type)
+  if ("comedy" === playFor(perf).type)
     volumeCredits += Math.floor(perf.audience / 5);
   return volumeCredits;
 }
@@ -414,9 +414,9 @@ function statement(invoice, plays) {
   let totalAmount = 0;
   let volumeCredits = 0;
   let result = `청구 내역 (고객명: ${invoice.customer})\n`;
-  const format = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
+  const format = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
     minimumFractionDigits: 2,
   }).format;
   for (let perf of invoice.performances) {
@@ -446,7 +446,7 @@ function volumeCreditsFor(aPerformance) {
   // perf => aPerformance
   let result = 0; // volumeCredits => result
   result += Math.max(aPerformance.audience - 30, 0); // volumeCredits, perf
-  if ('comedy' === playFor(aPerformance).type)
+  if ("comedy" === playFor(aPerformance).type)
     // perf
     result += Math.floor(aPerformance.audience / 5); // volumeCredits, perf
   return result; // volumeCredits
@@ -473,9 +473,9 @@ function statement(invoice, plays) {
   let totalAmount = 0;
   let volumeCredits = 0;
   let result = `청구 내역 (고객명: ${invoice.customer})\n`;
-  const format = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
+  const format = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
     minimumFractionDigits: 2,
   }).format;
   for (let perf of invoice.performances) {
@@ -502,9 +502,9 @@ function statement(invoice, plays) {
 ```js
 // statement() 함수...
 function format(aNumber) {
-  return new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
     minimumFractionDigits: 2,
   }).format(aNumber);
 }
@@ -569,9 +569,9 @@ function statement(invoice, plays) {
 // function format(aNumber) {
 function usd(aNumber) {
   // 함수 이름 변경
-  return new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
     minimumFractionDigits: 2,
   }).format(aNumber / 100); // 단위 변환 로직도 이 함수 안으로 이동
 }
