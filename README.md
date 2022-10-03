@@ -26,6 +26,7 @@
 
 - ### :star: [07 캡슐화](https://github.com/Esoolgnah/Summary_of_Refactoring_2nd_Edition/blob/main/Notes/07_캡슐화/07_00_캡슐화.md)
 
+- ### :star: [8장 기능 이동](https://github.com/Esoolgnah/Summary_of_Refactoring_2nd_Edition/blob/main/Notes/08_기능_이동/08_00_기능_이동.md)
 
 <br>
 
